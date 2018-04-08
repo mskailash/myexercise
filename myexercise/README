@@ -1,0 +1,59 @@
+USAGE INFO:
+----------
+ 
+usage: s_scan_duplicates.py [-h] [-d] scan_directory
+
+positional arguments:
+  scan_directory  Scans the Directory and displays Redundant filenames
+
+optional arguments:
+  -h, --help      show this help message and exit
+  -d, --debug     Debugging Mode Turned on
+
+
+VERSION INFO:
+------------
+Python Version: 2.7.14
+Environment: Linux - 4.13.0-37-generic #42-Ubuntu - x86_64 x86_64 x86_64 GNU/Linux [lubuntu]
+
+
+COMPONENT INFO:
+--------------
+1. m_duplicates_in_dir.py - Contains processing variables and methods
+2. s_scan_duplicates.py - Invokes the members of m_duplicates_in_dir.py to Identify Duplicate filenames
+3. redfiles - Test Directory where the items are placed
+4. README
+
+
+MODULE INFO:
+-----------
+scan_duplicates.py, in Python, which takes a directory as its argument, scans all filenames beneath that
+directory (including subdirectories), and suggests which filenames are redundant and could be deleted, in the
+following format (one per line).
+
+./<PATH>/<File1> may be superseded by ./<PATH>/<File2>
+
+1. The Main Program s_scan_duplicates.py, reads the directory name command line argument [ With an option to Debug ]
+   and uses members of module m_duplicates_in_dir.py to validate the filenames.
+
+2. Under the module m_duplicates_in_dir.py, duplicates_in_dir Class contains following members:
+	a. Directory name: Name of the directory to be scanned
+	b. File-List: List of Readable files in the directory (including the subdirectories)
+	c. File_count: has the count of readable files in the directory (including the subdirectories)
+   and a Function to Identify Duplicate file names (Excluding file extensions)
+
+
+	
+ASSUMPTIONS:
+-----------
+1. Files – for simplicity all scanned files are regular ones.
+
+2. File-Name – The spec does not require the content of files to be compared.
+
+3. Links – Skip, or for simplicity you can assume no soft links.
+
+4. Permission – Skip unreadable files, or for simplicity you can assume no access restrictions.
+
+5. Establishing Original File - If there are 3 copies of the same file, there must be 3 lines printed. Where the rules about which file should be considered “latest” are ambiguous, you are free to use your own judgement.
+
+6. Hidden files - are not handled as they have conflict with the requirements.
